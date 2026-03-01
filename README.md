@@ -13,7 +13,7 @@ Python desktop app for SMART/NVMe disk health monitoring.
 ## Run
 
 ```bash
-cd /home/evans/Documents/disk-health-monitor
+cd /home/"your username"/Documents/disk-health-monitor
 python3 main.py
 ```
 
