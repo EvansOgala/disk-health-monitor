@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>org.evans.DiskHealthMonitor</id>
+  <name>Disk Health Monitor</name>
+  <summary>Monitor SMART and NVMe health, temperature, and trend history</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MIT</project_license>
+  <launchable type="desktop-id">org.evans.DiskHealthMonitor.desktop</launchable>
+  <provides>
+    <binary>org.evans.DiskHealthMonitor</binary>
+  </provides>
+  <description>
+    <p>
+      Disk Health Monitor runs SMART/NVMe checks, tracks temperature trends,
+      and highlights risky health states over time.
+    </p>
+  </description>
+  <developer id="org.evans">
+    <name>Evans</name>
+  </developer>
+  <content_rating type="oars-1.1"/>
+  <releases>
+    <release version="1.0.0" date="2026-02-28"/>
+  </releases>
+</component>
