@@ -1,33 +1,73 @@
 # Disk Health Monitor
 
-Python desktop app for SMART/NVMe disk health monitoring.
+GTK4 disk health utility for SMART/NVMe checks and trend history.
 
 ## Features
 
-- Detect local disks via `lsblk`.
-- SMART/NVMe health checks (`smartctl`, `nvme-cli`).
-- Temperature alerts and health warnings.
-- Trend history for temperature and health snapshots.
-- Themed rounded UI (dark/light).
+- Detects local block devices
+- SMART health checks for SATA/SAS drives
+- NVMe SMART log checks for NVMe drives
+- Temperature and health trend snapshots
+- Launch detailed SMART command output in terminal
 
-## Run
+## Dependencies
+
+### Runtime
+
+- Python 3.11+
+- GTK4 + PyGObject
+- `smartmontools` (`smartctl`)
+- `nvme-cli` (`nvme`) for NVMe details
+- A supported terminal emulator (`x-terminal-emulator`, `gnome-terminal`, `konsole`, `xfce4-terminal`, `kitty`, `alacritty`, or `xterm`)
+- Optional: `pkexec` for privileged reads without starting the app as root
+
+### Install dependencies by distro
+
+#### Arch Linux / Nyarch
 
 ```bash
-cd /home/"your username"/Documents/disk-health-monitor
+sudo pacman -S --needed python python-gobject gtk4 smartmontools nvme-cli polkit xterm
+```
+
+#### Debian / Ubuntu
+
+```bash
+sudo apt update
+sudo apt install -y python3 python3-gi gir1.2-gtk-4.0 smartmontools nvme-cli policykit-1 xterm
+```
+
+#### Fedora
+
+```bash
+sudo dnf install -y python3 python3-gobject gtk4 smartmontools nvme-cli polkit xterm
+```
+
+## Run from source
+
+```bash
+cd /home/'your username'/Documents/disk-health-monitor
 python3 main.py
 ```
 
-## Notes
-
-- Install `smartmontools` for SMART checks.
-- Install `nvme-cli` for NVMe smart-log support.
-- Some devices require root for full SMART data.
-
 ## Build AppImage
 
+### Build requirements
+
 ```bash
-cd /home/evans/Documents/disk-health-monitor
 python3 -m pip install --user pyinstaller
-# place appimagetool at ./tools/appimagetool.AppImage or install appimagetool in PATH
+```
+
+Install `appimagetool` in `PATH`, or place one of these files in `./tools/`:
+
+- `appimagetool.AppImage`
+- `appimagetool-x86_64.AppImage`
+
+### Build command
+
+```bash
+cd /home/'your username'/Documents/disk-health-monitor
+chmod +x build-appimage.sh
 ./build-appimage.sh
 ```
+
+The script outputs an `.AppImage` file in the project root.
