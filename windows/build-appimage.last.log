@@ -1,0 +1,160 @@
+432 INFO: PyInstaller: 6.19.0, contrib hooks: 2026.2
+435 INFO: Python: 3.14.3
+439 INFO: Platform: Linux-6.19.6-arch1-1-x86_64-with-glibc2.43
+440 INFO: Python environment: /usr
+442 INFO: wrote /home/evans/Documents/disk-health-monitor/DiskHealthMonitor.spec
+447 INFO: Removing temporary files and cleaning cache in /home/evans/.cache/pyinstaller
+450 INFO: Module search paths (PYTHONPATH):
+['/home/evans/Documents/disk-health-monitor',
+ '/usr/lib/python314.zip',
+ '/usr/lib/python3.14',
+ '/usr/lib/python3.14/lib-dynload',
+ '/home/evans/.local/lib/python3.14/site-packages',
+ '/usr/lib/python3.14/site-packages',
+ '/home/evans/Documents/disk-health-monitor']
+1650 INFO: checking Analysis
+1650 INFO: Building Analysis because Analysis-00.toc is non existent
+1650 INFO: Looking for Python shared library...
+1670 INFO: Using Python shared library: /usr/lib/libpython3.14.so.1.0
+1671 INFO: Running Analysis Analysis-00.toc
+1671 INFO: Target bytecode optimization level: 0
+1672 INFO: Initializing module dependency graph...
+1676 INFO: Initializing module graph hook caches...
+1721 INFO: Analyzing modules for base_library.zip ...
+8120 INFO: Processing standard module hook 'hook-heapq.py' from '/home/evans/.local/lib/python3.14/site-packages/PyInstaller/hooks'
+11091 INFO: Processing standard module hook 'hook-encodings.py' from '/home/evans/.local/lib/python3.14/site-packages/PyInstaller/hooks'
+27046 INFO: Processing standard module hook 'hook-difflib.py' from '/home/evans/.local/lib/python3.14/site-packages/PyInstaller/hooks'
+28038 INFO: Processing standard module hook 'hook-pickle.py' from '/home/evans/.local/lib/python3.14/site-packages/PyInstaller/hooks'
+42989 INFO: Caching module dependency graph...
+43201 INFO: Analyzing /home/evans/Documents/disk-health-monitor/main.py
+43322 INFO: Processing pre-safe-import-module hook 'hook-gi.py' from '/home/evans/.local/lib/python3.14/site-packages/PyInstaller/hooks/pre_safe_import_module'
+43772 INFO: Processing standard module hook 'hook-gi.py' from '/home/evans/.local/lib/python3.14/site-packages/PyInstaller/hooks'
+44322 INFO: Processing pre-safe-import-module hook 'hook-gi.overrides.py' from '/home/evans/.local/lib/python3.14/site-packages/PyInstaller/hooks/pre_safe_import_module'
+44896 INFO: Processing pre-safe-import-module hook 'hook-gi.repository.GLib.py' from '/home/evans/.local/lib/python3.14/site-packages/PyInstaller/hooks/pre_safe_import_module'
+44900 INFO: Processing pre-safe-import-module hook 'hook-gi.repository.Gtk.py' from '/home/evans/.local/lib/python3.14/site-packages/PyInstaller/hooks/pre_safe_import_module'
+44901 INFO: Processing standard module hook 'hook-gi.repository.GLib.py' from '/home/evans/.local/lib/python3.14/site-packages/PyInstaller/hooks'
+44902 INFO: Processing standard module hook 'hook-gi.repository.Gtk.py' from '/home/evans/.local/lib/python3.14/site-packages/PyInstaller/hooks'
+45007 INFO: Analyzing hidden import 'gi.overrides.Gtk'
+45396 INFO: Processing pre-safe-import-module hook 'hook-gi.repository.GObject.py' from '/home/evans/.local/lib/python3.14/site-packages/PyInstaller/hooks/pre_safe_import_module'
+45401 INFO: Processing standard module hook 'hook-gi.repository.GObject.py' from '/home/evans/.local/lib/python3.14/site-packages/PyInstaller/hooks'
+48443 INFO: Processing standard module hook 'hook-multiprocessing.util.py' from '/home/evans/.local/lib/python3.14/site-packages/PyInstaller/hooks'
+49078 INFO: Processing standard module hook 'hook-xml.py' from '/home/evans/.local/lib/python3.14/site-packages/PyInstaller/hooks'
+50801 INFO: Processing standard module hook 'hook-sysconfig.py' from '/home/evans/.local/lib/python3.14/site-packages/PyInstaller/hooks'
+50829 INFO: Processing standard module hook 'hook-_ctypes.py' from '/home/evans/.local/lib/python3.14/site-packages/PyInstaller/hooks'
+54276 INFO: Processing pre-safe-import-module hook 'hook-gi.repository.Gio.py' from '/home/evans/.local/lib/python3.14/site-packages/PyInstaller/hooks/pre_safe_import_module'
+54280 INFO: Processing standard module hook 'hook-gi.repository.Gio.py' from '/home/evans/.local/lib/python3.14/site-packages/PyInstaller/hooks'
+56214 INFO: Processing module hooks (post-graph stage)...
+56292 INFO: Processing standard module hook 'hook-gi.repository.Gtk.py' from '/home/evans/.local/lib/python3.14/site-packages/PyInstaller/hooks'
+64233 INFO: Processing pre-safe-import-module hook 'hook-gi.repository.xlib.py' from '/home/evans/.local/lib/python3.14/site-packages/PyInstaller/hooks/pre_safe_import_module'
+64238 INFO: Processing pre-safe-import-module hook 'hook-gi.repository.Gdk.py' from '/home/evans/.local/lib/python3.14/site-packages/PyInstaller/hooks/pre_safe_import_module'
+64240 INFO: Processing pre-safe-import-module hook 'hook-gi.repository.Atk.py' from '/home/evans/.local/lib/python3.14/site-packages/PyInstaller/hooks/pre_safe_import_module'
+65041 INFO: Processing standard module hook 'hook-gi.repository.GLib.py' from '/home/evans/.local/lib/python3.14/site-packages/PyInstaller/hooks'
+68044 INFO: Processing pre-safe-import-module hook 'hook-gi.repository.GModule.py' from '/home/evans/.local/lib/python3.14/site-packages/PyInstaller/hooks/pre_safe_import_module'
+68065 INFO: Processing standard module hook 'hook-gi.repository.Gdk.py' from '/home/evans/.local/lib/python3.14/site-packages/PyInstaller/hooks'
+69952 INFO: Processing pre-safe-import-module hook 'hook-gi.repository.cairo.py' from '/home/evans/.local/lib/python3.14/site-packages/PyInstaller/hooks/pre_safe_import_module'
+69956 INFO: Processing standard module hook 'hook-gi.repository.cairo.py' from '/home/evans/.local/lib/python3.14/site-packages/PyInstaller/hooks'
+71696 INFO: Processing pre-safe-import-module hook 'hook-gi.repository.Pango.py' from '/home/evans/.local/lib/python3.14/site-packages/PyInstaller/hooks/pre_safe_import_module'
+71703 INFO: Processing pre-safe-import-module hook 'hook-gi.repository.GdkPixbuf.py' from '/home/evans/.local/lib/python3.14/site-packages/PyInstaller/hooks/pre_safe_import_module'
+71888 INFO: Processing standard module hook 'hook-gi.repository.xlib.py' from '/home/evans/.local/lib/python3.14/site-packages/PyInstaller/hooks'
+73604 INFO: Processing standard module hook 'hook-gi.repository.Atk.py' from '/home/evans/.local/lib/python3.14/site-packages/PyInstaller/hooks'
+75392 INFO: Processing standard module hook 'hook-gi.repository.Pango.py' from '/home/evans/.local/lib/python3.14/site-packages/PyInstaller/hooks'
+77189 INFO: Processing pre-safe-import-module hook 'hook-gi.repository.HarfBuzz.py' from '/home/evans/.local/lib/python3.14/site-packages/PyInstaller/hooks/pre_safe_import_module'
+77190 INFO: Processing standard module hook 'hook-gi.repository.GdkPixbuf.py' from '/home/evans/.local/lib/python3.14/site-packages/PyInstaller/hooks'
+79125 INFO: Processing standard module hook 'hook-gi.repository.GModule.py' from '/home/evans/.local/lib/python3.14/site-packages/PyInstaller/hooks'
+81040 INFO: Processing standard module hook 'hook-gi.repository.HarfBuzz.py' from '/home/evans/.local/lib/python3.14/site-packages/PyInstaller/hooks'
+82871 INFO: Processing pre-safe-import-module hook 'hook-gi.repository.freetype2.py' from '/home/evans/.local/lib/python3.14/site-packages/PyInstaller/hooks/pre_safe_import_module'
+82882 INFO: Processing standard module hook 'hook-gi.repository.freetype2.py' from '/home/evans/.local/lib/python3.14/site-packages/PyInstaller/hooks'
+84901 INFO: Performing binary vs. data reclassification (4810 entries)
+87908 INFO: Looking for ctypes DLLs
+87981 INFO: Analyzing run-time hooks ...
+87995 INFO: Including run-time hook 'pyi_rth_glib.py' from '/home/evans/.local/lib/python3.14/site-packages/PyInstaller/hooks/rthooks'
+88008 INFO: Including run-time hook 'pyi_rth_pkgutil.py' from '/home/evans/.local/lib/python3.14/site-packages/PyInstaller/hooks/rthooks'
+88027 INFO: Including run-time hook 'pyi_rth_inspect.py' from '/home/evans/.local/lib/python3.14/site-packages/PyInstaller/hooks/rthooks'
+88061 INFO: Including run-time hook 'pyi_rth_multiprocessing.py' from '/home/evans/.local/lib/python3.14/site-packages/PyInstaller/hooks/rthooks'
+88082 INFO: Including run-time hook 'pyi_rth_gio.py' from '/home/evans/.local/lib/python3.14/site-packages/PyInstaller/hooks/rthooks'
+88096 INFO: Including run-time hook 'pyi_rth_gtk.py' from '/home/evans/.local/lib/python3.14/site-packages/PyInstaller/hooks/rthooks'
+88115 INFO: Including run-time hook 'pyi_rth_gdkpixbuf.py' from '/home/evans/.local/lib/python3.14/site-packages/PyInstaller/hooks/rthooks'
+88129 INFO: Including run-time hook 'pyi_rth_gi.py' from '/home/evans/.local/lib/python3.14/site-packages/PyInstaller/hooks/rthooks'
+88860 INFO: Compiling collected GLib schema files in '/home/evans/Documents/disk-health-monitor/build/DiskHealthMonitor/_pyi_gschema_compilation'...
+89306 INFO: Creating base_library.zip...
+89415 INFO: Looking for dynamic libraries
+94984 INFO: Warnings written to /home/evans/Documents/disk-health-monitor/build/DiskHealthMonitor/warn-DiskHealthMonitor.txt
+95092 INFO: Graph cross-reference written to /home/evans/Documents/disk-health-monitor/build/DiskHealthMonitor/xref-DiskHealthMonitor.html
+95580 INFO: checking PYZ
+95581 INFO: Building PYZ because PYZ-00.toc is non existent
+95582 INFO: Building PYZ (ZlibArchive) /home/evans/Documents/disk-health-monitor/build/DiskHealthMonitor/PYZ-00.pyz
+96712 INFO: Building PYZ (ZlibArchive) /home/evans/Documents/disk-health-monitor/build/DiskHealthMonitor/PYZ-00.pyz completed successfully.
+96751 INFO: checking PKG
+96752 INFO: Building PKG because PKG-00.toc is non existent
+96752 INFO: Building PKG (CArchive) DiskHealthMonitor.pkg
+96814 INFO: Building PKG (CArchive) DiskHealthMonitor.pkg completed successfully.
+96817 INFO: Bootloader /home/evans/.local/lib/python3.14/site-packages/PyInstaller/bootloader/Linux-64bit-intel/run
+96817 INFO: checking EXE
+96818 INFO: Building EXE because EXE-00.toc is non existent
+96818 INFO: Building EXE from EXE-00.toc
+96818 INFO: Copying bootloader EXE to /home/evans/Documents/disk-health-monitor/build/DiskHealthMonitor/DiskHealthMonitor
+96820 INFO: Appending PKG archive to custom ELF section in EXE
+96847 INFO: Building EXE from EXE-00.toc completed successfully.
+97094 INFO: checking COLLECT
+97094 INFO: Building COLLECT because COLLECT-00.toc is non existent
+97095 INFO: Building COLLECT COLLECT-00.toc
+101646 INFO: Building COLLECT COLLECT-00.toc completed successfully.
+102213 INFO: Build complete! The results are available in: /home/evans/Documents/disk-health-monitor/dist
+appimagetool, continuous build (git version 8c8c91f), build 295 built on 2025-12-04 17:56:36 UTC
+/home/evans/Documents/disk-health-monitor/AppDir/org.evans.DiskHealthMonitor.desktop: hint: value "Utility;System;Monitor;" for key "Categories" in group "Desktop Entry" contains more than one main category; application might appear more than once in the application menu
+Using architecture x86_64
+/home/evans/Documents/disk-health-monitor/AppDir should be packaged as org.evans.DiskHealthMonitor-x86_64.AppImage
+Deleting pre-existing .DirIcon
+Creating .DirIcon symlink based on information from desktop file
+AppStream upstream metadata found in usr/share/metainfo/org.evans.DiskHealthMonitor.appdata.xml
+Trying to validate AppStream information with the appstreamcli tool
+In case of issues, please refer to https://github.com/ximion/appstream
+org.evans.DiskHealthMonitor.appdata.xml
+
+org.evans.DiskHealthMonitor.metainfo.xml
+
+✔ Validation was successful: pedantic: 2
+Trying to validate AppStream information with the appstream-util tool
+In case of issues, please refer to https://github.com/hughsie/appstream-glib
+/home/evans/Documents/disk-health-monitor/AppDir/usr/share/metainfo/org.evans.DiskHealthMonitor.appdata.xml: OK
+Generating squashfs...
+Downloading runtime file from https://github.com/AppImage/type2-runtime/releases/download/continuous/runtime-x86_64
+Downloaded runtime binary of size 944632
+Parallel mksquashfs: Using 4 processors
+Creating 4.0 filesystem on org.evans.DiskHealthMonitor-x86_64.AppImage, block size 131072.
+[=====================================================|        ] 4900/5600  87%[=========================================================-    ] 5300/5600  94%[=============================================================\] 5600/5600 100%
+
+Exportable Squashfs 4.0 filesystem, zstd compressed, data block size 131072
+	compressed data, compressed metadata, compressed fragments,
+	compressed xattrs, compressed ids
+	duplicates are removed
+Filesystem size 55062.67 Kbytes (53.77 Mbytes)
+	35.46% of uncompressed filesystem size (155300.77 Kbytes)
+Inode table size 44345 bytes (43.31 Kbytes)
+	25.69% of uncompressed inode table size (172599 bytes)
+Directory table size 55017 bytes (53.73 Kbytes)
+	34.43% of uncompressed directory table size (159794 bytes)
+Number of duplicate files found 720
+Number of inodes 5201
+Number of files 4709
+Number of fragments 273
+Number of symbolic links 80
+Number of device nodes 0
+Number of fifo nodes 0
+Number of socket nodes 0
+Number of directories 412
+Number of hard-links 0
+Number of ids (unique uids + gids) 1
+Number of uids 1
+	root (0)
+Number of gids 1
+	root (0)
+Embedding ELF...
+Marking the AppImage as executable...
+Embedding MD5 digest
+Success
+
+Please consider submitting your AppImage to AppImageHub, the crowd-sourced
+central directory of available AppImages, by opening a pull request
+at https://github.com/AppImage/appimage.github.io
+Built: org.evans.DiskHealthMonitor-x86_64.AppImage

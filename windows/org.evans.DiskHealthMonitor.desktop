@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Disk Health Monitor
+Comment=SMART and NVMe health checks with trend tracking
+Exec=org.evans.DiskHealthMonitor
+Icon=org.evans.DiskHealthMonitor
+Terminal=false
+Categories=Utility;System;Monitor;
+StartupNotify=true
+StartupWMClass=DiskHealthMonitor
