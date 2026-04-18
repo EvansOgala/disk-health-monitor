@@ -1,100 +1,59 @@
-# File Explorer
+# Disk Health Monitor
 
-Desktop file explorer with favorites, search, preview, and file operations.
+Disk Health Monitor is a GTK4 desktop utility for checking SMART and NVMe drive health, temperatures, and trend history.
 
 ## Features
 
-- Directory tree + file list
-- Double-click to open folders/files
-- Search and sorting controls
-- Create, rename, move, copy, and delete actions
-- Right-click context menu
-- Persisted last-opened path
-- Linux: GTK4 UI
-- Windows: PySide6 UI with drive list
+- Detects local block devices
+- SMART health checks for SATA and SAS drives
+- NVMe SMART log checks for NVMe drives
+- Temperature and health trend snapshots
+- Launch detailed SMART command output in a terminal
+- GTK4 desktop UI on Linux
+- PySide6 desktop UI on Windows
 
-## Dependencies
+## Runtime Dependencies
 
-### Runtime
+- Python 3
+- GTK4
+- PyGObject
+- smartmontools (`smartctl`)
+- nvme-cli (`nvme`) for NVMe details
+- A supported terminal emulator for detailed command output
+- Optional: `pkexec` for elevated reads without running the whole app as root
 
-- Python 3.11+
-
-Linux UI stack:
-
-- GTK4 + PyGObject
-- `xdg-utils` for opening files/URIs
-- Optional: `pkexec` (`polkit`) for root-open action
-
-Windows UI stack:
-
-- PySide6 (Qt)
-
-### Install dependencies by distro
-
-#### Arch Linux / Nyarch
+On Arch Linux:
 
 ```bash
-sudo pacman -S --needed python python-gobject gtk4 xdg-utils polkit
+sudo pacman -S --needed python python-gobject gtk4 smartmontools nvme-cli polkit xterm
 ```
 
-#### Debian / Ubuntu
+## Run From Source
 
 ```bash
-sudo apt update
-sudo apt install -y python3 python3-gi gir1.2-gtk-4.0 xdg-utils policykit-1
-```
-
-#### Fedora
-
-```bash
-sudo dnf install -y python3 python3-gobject gtk4 xdg-utils polkit
-```
-
-## Run from source
-
-### Linux
-
-```bash
-cd /home/'your username'/Documents/file-explorer
+cd ~/Documents/disk-health-monitor
 python3 main.py
 ```
 
-### Windows
+## Packaging
 
-```powershell
-cd C:\Users\your-username\Documents\file-explorer
-py -m pip install PySide6
-py main.py
-```
+This repository now includes an AUR-ready `disk-health-monitor-git` package:
 
-## Build AppImage
+- [PKGBUILD](./PKGBUILD)
+- [.SRCINFO](./.SRCINFO)
 
-### Build requirements
+To build it locally on Arch Linux:
 
 ```bash
-python3 -m pip install --user pyinstaller
+cd ~/Documents/disk-health-monitor
+makepkg -si
 ```
 
-Install `appimagetool` in `PATH`, or place one of these files in `./tools/`:
+## Notes
 
-- `appimagetool.AppImage`
-- `appimagetool-x86_64.AppImage`
+- SMART reads may require elevated privileges depending on your drive and kernel permissions.
+- The app stores settings in `~/.config/disk_health_monitor/settings.json`.
 
-### Build command
+## License
 
-```bash
-cd /home/'your username'/Documents/file-explorer
-chmod +x build-appimage.sh
-./build-appimage.sh
-```
-
-The script outputs an `.AppImage` file in the project root.
-
-## Build Windows (PyInstaller)
-
-```powershell
-cd C:\Users\your-username\Documents\file-explorer
-build-windows.bat
-```
-
-The executable is emitted into `dist\FileExplorer\`.
+MIT
