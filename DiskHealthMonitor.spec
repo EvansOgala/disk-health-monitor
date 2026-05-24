@@ -1,8 +1,12 @@
 # -*- mode: python ; coding: utf-8 -*-
 
 import os
-
-project_path = os.path.abspath(os.path.dirname(__file__))
+import sys
+project_file = globals().get('__file__', None) or (sys.argv[0] if len(sys.argv) > 0 else None)
+if project_file:
+    project_path = os.path.abspath(os.path.dirname(project_file))
+else:
+    project_path = os.path.abspath(os.getcwd())
 
 a = Analysis(
     ['main.py'],
