@@ -1,5 +1,5 @@
 pkgname=disk-health-monitor-git
-pkgver=0.r9.g0b093ff
+pkgver=0.r13.g09400cf
 pkgrel=1
 pkgdesc="Qt SMART and NVMe disk health monitor with trend tracking"
 arch=('any')
