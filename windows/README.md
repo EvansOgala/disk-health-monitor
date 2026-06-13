@@ -9,8 +9,8 @@ Disk health utility for SMART checks, drive status review, and trend history.
 - NVMe SMART log checks for NVMe drives
 - Temperature and health trend snapshots
 - Launch detailed SMART command output in terminal
-- Linux: GTK4 UI
-- Windows: PySide6 UI
+- Linux: Qt UI
+- Windows: Qt UI
 
 ## Dependencies
 
@@ -20,7 +20,7 @@ Disk health utility for SMART checks, drive status review, and trend history.
 
 Linux stack:
 
-- GTK4 + PyGObject
+- PySide6 (Qt)
 - `smartmontools` (`smartctl`)
 - `nvme-cli` (`nvme`) for NVMe details
 - A supported terminal emulator (`x-terminal-emulator`, `gnome-terminal`, `konsole`, `xfce4-terminal`, `kitty`, `alacritty`, or `xterm`)
@@ -47,20 +47,20 @@ The Windows app can also prompt to relaunch itself as Administrator when SMART a
 #### Arch Linux / Nyarch
 
 ```bash
-sudo pacman -S --needed python python-gobject gtk4 smartmontools nvme-cli polkit xterm
+sudo pacman -S --needed python pyside6 smartmontools nvme-cli polkit xterm
 ```
 
 #### Debian / Ubuntu
 
 ```bash
 sudo apt update
-sudo apt install -y python3 python3-gi gir1.2-gtk-4.0 smartmontools nvme-cli policykit-1 xterm
+sudo apt install -y python3 python3-pyside6.qtcore python3-pyside6.qtgui python3-pyside6.qtwidgets smartmontools nvme-cli policykit-1 xterm
 ```
 
 #### Fedora
 
 ```bash
-sudo dnf install -y python3 python3-gobject gtk4 smartmontools nvme-cli polkit xterm
+sudo dnf install -y python3 python3-pyside6 smartmontools nvme-cli polkit xterm
 ```
 
 ## Run from source

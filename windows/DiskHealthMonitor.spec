@@ -10,11 +10,6 @@ a = Analysis(
     binaries=[],
     datas=[("org.evans.DiskHealthMonitor.svg", ".")],
     hiddenimports=[
-        "gi",
-        "gi.overrides.Gtk",
-        "gi.repository.Gtk",
-        "gi.repository.Gio",
-        "gi.repository.GLib",
         "pyside_ui",
         "PySide6",
         "PySide6.QtCore",

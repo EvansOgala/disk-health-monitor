@@ -1,6 +1,6 @@
 # Disk Health Monitor
 
-Disk Health Monitor is a GTK4 desktop utility for checking SMART and NVMe drive health, temperatures, and trend history.
+Disk Health Monitor is a Qt desktop utility for checking SMART and NVMe drive health, temperatures, and trend history.
 
 ## Features
 
@@ -9,14 +9,12 @@ Disk Health Monitor is a GTK4 desktop utility for checking SMART and NVMe drive 
 - NVMe SMART log checks for NVMe drives
 - Temperature and health trend snapshots
 - Launch detailed SMART command output in a terminal
-- GTK4 desktop UI on Linux
-- PySide6 desktop UI on Windows
+- Qt desktop UI on Linux and Windows
 
 ## Runtime Dependencies
 
 - Python 3
-- GTK4
-- PyGObject
+- Qt for Python (PySide6)
 - smartmontools (`smartctl`)
 - nvme-cli (`nvme`) for NVMe details
 - A supported terminal emulator for detailed command output
@@ -25,7 +23,7 @@ Disk Health Monitor is a GTK4 desktop utility for checking SMART and NVMe drive 
 On Arch Linux:
 
 ```bash
-sudo pacman -S --needed python python-gobject gtk4 smartmontools nvme-cli polkit xterm
+sudo pacman -S --needed python pyside6 smartmontools nvme-cli polkit xterm
 ```
 
 ## Run From Source

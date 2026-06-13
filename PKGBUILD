@@ -1,15 +1,14 @@
 pkgname=disk-health-monitor-git
 pkgver=0.r9.g0b093ff
 pkgrel=1
-pkgdesc="GTK4 SMART and NVMe disk health monitor with trend tracking"
+pkgdesc="Qt SMART and NVMe disk health monitor with trend tracking"
 arch=('any')
 url="https://github.com/EvansOgala/disk-health-monitor"
 license=('MIT')
 options=('!strip' '!debug')
 depends=(
   'python'
-  'python-gobject'
-  'gtk4'
+  'pyside6'
   'smartmontools'
   'nvme-cli'
 )
@@ -26,20 +25,24 @@ pkgver() {
     "$(git rev-parse --short HEAD)"
 }
 
-build() {
-  cd "$srcdir/$pkgname"
-  python3 -m PyInstaller --clean --noconfirm --log-level=ERROR DiskHealthMonitor.spec
-}
-
 package() {
   cd "$srcdir/$pkgname"
 
   install -d "$pkgdir/usr/lib/disk-health-monitor"
-  cp -a dist/DiskHealthMonitor/. "$pkgdir/usr/lib/disk-health-monitor/"
+  install -Dm644 main.py "$pkgdir/usr/lib/disk-health-monitor/main.py"
+  install -Dm644 ui.py "$pkgdir/usr/lib/disk-health-monitor/ui.py"
+  install -Dm644 qt_style.py "$pkgdir/usr/lib/disk-health-monitor/qt_style.py"
+  install -Dm644 settings.py "$pkgdir/usr/lib/disk-health-monitor/settings.py"
+  install -Dm644 disk_ops.py "$pkgdir/usr/lib/disk-health-monitor/disk_ops.py"
 
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/disk-health-monitor" <<'LAUNCHER'
 #!/bin/sh
-exec /usr/lib/disk-health-monitor/DiskHealthMonitor "$@"
+exec /usr/bin/python3 /usr/lib/disk-health-monitor/main.py "$@"
+LAUNCHER
+
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/org.evans.DiskHealthMonitor" <<'LAUNCHER'
+#!/bin/sh
+exec /usr/bin/python3 /usr/lib/disk-health-monitor/main.py "$@"
 LAUNCHER
 
   install -Dm644 org.evans.DiskHealthMonitor.desktop \

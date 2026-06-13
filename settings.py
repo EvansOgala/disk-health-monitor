@@ -1,7 +1,8 @@
 import json
+import os
 from pathlib import Path
 
-APP_DIR = Path.home() / ".config" / "disk_health_monitor"
+APP_DIR = Path(os.environ.get("XDG_CONFIG_HOME", Path.home() / ".config")) / "disk_health_monitor"
 SETTINGS_PATH = APP_DIR / "settings.json"
 
 DEFAULT_SETTINGS = {

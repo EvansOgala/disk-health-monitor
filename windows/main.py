@@ -1,17 +1,8 @@
-import os
-
-if os.name == "nt":
-    from pyside_ui import DiskHealthQtApp
-else:
-    from ui import DiskHealthApp
+from pyside_ui import DiskHealthQtApp
 
 
 def main():
-    if os.name == "nt":
-        DiskHealthQtApp.run_app()
-    else:
-        app = DiskHealthApp()
-        app.run(None)
+    DiskHealthQtApp.run_app()
 
 
 if __name__ == "__main__":
