@@ -112,8 +112,11 @@ class DiskHealthWindow(QMainWindow):
         side_layout.addWidget(theme_label)
 
         self.theme_dropdown = QComboBox()
-        self.theme_dropdown.addItems(["dark", "light"])
-        self.theme_dropdown.currentTextChanged.connect(self._on_theme_changed)
+        for label, key in (("Midnight", "dark"), ("Paper", "light"), ("Nord", "nord"), ("Sunset", "sunset"), ("Forest", "forest")):
+            self.theme_dropdown.addItem(label, key)
+        self.theme_dropdown.currentIndexChanged.connect(
+            lambda index: self._on_theme_changed(self.theme_dropdown.itemData(index))
+        )
         side_layout.addWidget(self.theme_dropdown)
 
         side_layout.addStretch(1)
@@ -159,44 +162,53 @@ class DiskHealthWindow(QMainWindow):
 
         controls = QFrame()
         controls.setObjectName("panel")
-        controls_layout = QHBoxLayout(controls)
-        controls_layout.setContentsMargins(12, 12, 12, 12)
-        controls_layout.setSpacing(8)
+        controls_layout = QVBoxLayout(controls)
+        controls_layout.setContentsMargins(14, 14, 14, 14)
+        controls_layout.setSpacing(10)
         layout.addWidget(controls)
+
+        primary_actions = QHBoxLayout()
+        primary_actions.setSpacing(8)
+        controls_layout.addLayout(primary_actions)
 
         refresh_btn = QPushButton("Refresh")
         refresh_btn.setProperty("primary", True)
         refresh_btn.clicked.connect(lambda _checked=False: self.refresh_health())
-        controls_layout.addWidget(refresh_btn)
+        primary_actions.addWidget(refresh_btn)
 
         smart_btn = QPushButton("Full SMART")
         smart_btn.clicked.connect(lambda _checked=False: self.run_full_smart())
-        controls_layout.addWidget(smart_btn)
+        primary_actions.addWidget(smart_btn)
+        primary_actions.addStretch(1)
+        self.auto_check = QCheckBox("Refresh automatically")
+        self.auto_check.stateChanged.connect(lambda _state: self._on_options_changed())
+        primary_actions.addWidget(self.auto_check)
 
-        controls_layout.addSpacing(10)
-        controls_layout.addWidget(QLabel("Refresh (s)"))
+        options = QHBoxLayout()
+        options.setSpacing(8)
+        options.addWidget(QLabel("Refresh every"))
         self.refresh_spin = QSpinBox()
         self.refresh_spin.setRange(30, 1800)
         self.refresh_spin.setSingleStep(10)
         self.refresh_spin.valueChanged.connect(lambda _value: self._on_options_changed())
-        controls_layout.addWidget(self.refresh_spin)
+        options.addWidget(self.refresh_spin)
+        options.addWidget(QLabel("seconds"))
 
-        controls_layout.addWidget(QLabel("Alert temp (C)"))
+        options.addSpacing(12)
+        options.addWidget(QLabel("Temperature alert"))
         self.alert_spin = QSpinBox()
         self.alert_spin.setRange(30, 100)
         self.alert_spin.valueChanged.connect(lambda _value: self._on_options_changed())
-        controls_layout.addWidget(self.alert_spin)
-
-        self.auto_check = QCheckBox("Auto refresh")
-        self.auto_check.stateChanged.connect(lambda _state: self._on_options_changed())
-        controls_layout.addWidget(self.auto_check)
-        controls_layout.addStretch(1)
+        options.addWidget(self.alert_spin)
+        options.addWidget(QLabel("°C"))
+        options.addStretch(1)
+        controls_layout.addLayout(options)
 
         self.summary_label = QLabel("")
         self.summary_label.setObjectName("summaryLabel")
         layout.addWidget(self.summary_label)
 
-        split = QSplitter(Qt.Orientation.Vertical)
+        split = QSplitter(Qt.Orientation.Horizontal)
         layout.addWidget(split, 1)
 
         disk_panel = QFrame()
@@ -228,7 +240,7 @@ class DiskHealthWindow(QMainWindow):
         self.details_view.setLineWrapMode(QTextEdit.LineWrapMode.NoWrap)
         details_layout.addWidget(self.details_view, 1)
         split.addWidget(details_panel)
-        split.setSizes([300, 430])
+        split.setSizes([440, 600])
 
         return page
 
@@ -257,7 +269,7 @@ class DiskHealthWindow(QMainWindow):
     def _apply_settings(self):
         if self.theme_dropdown is not None:
             self.theme_dropdown.blockSignals(True)
-            self.theme_dropdown.setCurrentText(self.theme_name)
+            self.theme_dropdown.setCurrentIndex(max(0, self.theme_dropdown.findData(self.theme_name)))
             self.theme_dropdown.blockSignals(False)
         if self.refresh_spin is not None:
             self.refresh_spin.setValue(int(self.settings.get("refresh_interval_sec", 60)))
@@ -327,16 +339,31 @@ class DiskHealthWindow(QMainWindow):
             self.row_data_by_item.clear()
 
             for idx, row_data in enumerate(rows):
-                temp_str = "N/A" if row_data.temp_c is None else f"{row_data.temp_c}C"
-                alerts = ", ".join(row_data.alerts) if row_data.alerts else "none"
-                line = (
-                    f"{row_data.device} | {row_data.health:<7} | temp={temp_str:<6} | "
-                    f"hours={row_data.power_on_hours if row_data.power_on_hours is not None else 'N/A'} | alerts={alerts}"
-                )
-                item = QListWidgetItem(line)
+                item = QListWidgetItem()
                 item.setData(Qt.ItemDataRole.UserRole, idx)
                 self.row_data_by_item[idx] = row_data
                 self.disk_list.addItem(item)
+                card = QFrame()
+                card.setObjectName("diskRow")
+                card_layout = QVBoxLayout(card)
+                card_layout.setContentsMargins(12, 10, 12, 10)
+                card_layout.setSpacing(4)
+                title = QLabel(f"{row_data.model}  ·  {row_data.device}")
+                title.setObjectName("diskTitle")
+                meta = QLabel(f"{row_data.size}  ·  {row_data.protocol}  ·  {row_data.health}")
+                meta.setObjectName("diskMeta")
+                temp = "N/A" if row_data.temp_c is None else f"{row_data.temp_c} °C"
+                alert_text = f"{len(row_data.alerts)} alert(s)" if row_data.alerts else "No alerts"
+                status = QLabel(f"Temperature {temp}  ·  {alert_text}")
+                status.setObjectName("diskMeta")
+                card_layout.addWidget(title)
+                card_layout.addWidget(meta)
+                card_layout.addWidget(status)
+                item.setSizeHint(card.sizeHint())
+                self.disk_list.setItemWidget(item, card)
+
+            if not rows:
+                self.disk_list.addItem(QListWidgetItem("No drives found. Check lsblk and smartmontools."))
 
             if self.disk_list.count() > 0 and self.disk_list.currentRow() < 0:
                 self.disk_list.setCurrentRow(0)
@@ -357,6 +384,13 @@ class DiskHealthWindow(QMainWindow):
         if self.disk_list is None:
             return
         item = self.disk_list.currentItem()
+        for row_index in range(self.disk_list.count()):
+            row_item = self.disk_list.item(row_index)
+            row_widget = self.disk_list.itemWidget(row_item)
+            if row_widget is not None:
+                row_widget.setProperty("selected", row_index == self.disk_list.currentRow())
+                row_widget.style().unpolish(row_widget)
+                row_widget.style().polish(row_widget)
         if item is None:
             return
         idx = item.data(Qt.ItemDataRole.UserRole)

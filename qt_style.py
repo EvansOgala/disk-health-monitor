@@ -31,6 +31,21 @@ THEMES = {
         "selection": "#2f6fdb",
         "input": "#ffffff",
     },
+    "nord": {
+        "window": "#242933", "surface": "#2e3440", "panel": "#303846", "sidebar": "#202630",
+        "border": "#454e5e", "text": "#eceff4", "muted": "#aab4c4", "accent": "#88c0d0",
+        "accent_hover": "#9bd2e2", "selection": "#455c73", "input": "#252c37",
+    },
+    "sunset": {
+        "window": "#241b24", "surface": "#30232e", "panel": "#392832", "sidebar": "#1e1720",
+        "border": "#59404b", "text": "#fff0e8", "muted": "#c7a9a1", "accent": "#ff8a5b",
+        "accent_hover": "#ffa078", "selection": "#70464b", "input": "#241c25",
+    },
+    "forest": {
+        "window": "#19231f", "surface": "#202e28", "panel": "#26372f", "sidebar": "#151e1a",
+        "border": "#3d5548", "text": "#e8f2e9", "muted": "#a6bdab", "accent": "#75c69a",
+        "accent_hover": "#8bd9ae", "selection": "#365b49", "input": "#1b2821",
+    },
 }
 
 
@@ -83,8 +98,8 @@ QLabel#brandTitle {{
 
 QLabel#pageTitle {{
     color: {theme["text"]};
-    font-size: 22px;
-    font-weight: 500;
+    font-size: 28px;
+    font-weight: 700;
 }}
 
 QLabel#sectionTitle {{
@@ -103,7 +118,7 @@ QLabel#summaryLabel {{
 QFrame#panel {{
     background: {theme["panel"]};
     border: 1px solid {theme["border"]};
-    border-radius: 6px;
+    border-radius: 12px;
 }}
 
 QSpinBox,
@@ -112,9 +127,9 @@ QTextEdit {{
     background: {theme["input"]};
     color: {theme["text"]};
     border: 1px solid {theme["border"]};
-    border-radius: 5px;
-    min-height: 32px;
-    padding: 4px 9px;
+    border-radius: 8px;
+    min-height: 36px;
+    padding: 5px 10px;
 }}
 
 QTextEdit#textView {{
@@ -137,9 +152,10 @@ QPushButton {{
     background: {theme["panel"]};
     color: {theme["text"]};
     border: 1px solid {theme["border"]};
-    border-radius: 5px;
-    min-height: 32px;
-    padding: 5px 12px;
+    border-radius: 8px;
+    min-height: 36px;
+    padding: 6px 14px;
+    font-weight: 600;
 }}
 
 QPushButton:hover {{
@@ -162,8 +178,8 @@ QPushButton#navButton {{
     text-align: left;
     background: transparent;
     border: 0;
-    border-radius: 5px;
-    padding: 7px 10px;
+    border-radius: 8px;
+    padding: 9px 12px;
 }}
 
 QPushButton#navButton:hover {{
@@ -177,17 +193,19 @@ QPushButton#navButton:checked {{
 }}
 
 QListWidget#resultList {{
-    background: {theme["surface"]};
+    background: transparent;
     color: {theme["text"]};
-    border: 1px solid {theme["border"]};
-    border-radius: 5px;
+    border: 0;
     outline: 0;
     padding: 6px;
 }}
 
 QListWidget#resultList::item {{
-    border-radius: 5px;
-    padding: 8px;
+    background: {theme["surface"]};
+    border: 1px solid {theme["border"]};
+    border-radius: 10px;
+    padding: 10px;
+    margin: 3px 0;
 }}
 
 QListWidget#resultList::item:selected {{
@@ -198,6 +216,32 @@ QListWidget#resultList::item:selected {{
 QSplitter::handle {{
     background: {theme["window"]};
     height: 8px;
+}}
+
+QLabel#eyebrow {{
+    color: {theme["accent"]};
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}}
+
+QLabel#diskTitle {{ color: {theme["text"]}; font-size: 14px; font-weight: 700; }}
+QLabel#diskMeta {{ color: {theme["muted"]}; font-size: 12px; }}
+QLabel#healthBadge {{ color: {theme["accent"]}; font-weight: 700; }}
+QTextEdit#textView {{ border-radius: 8px; }}
+
+QFrame#diskRow {{
+    background: {theme["surface"]};
+    border: 1px solid {theme["border"]};
+    border-radius: 9px;
+}}
+
+QFrame#diskRow[selected="true"] {{ border-color: {theme["accent"]}; }}
+
+QLabel#summaryLabel {{
+    font-size: 13px;
+    font-weight: 600;
+    padding: 3px 2px;
 }}
 
 QScrollBar:vertical {{

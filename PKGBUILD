@@ -1,5 +1,5 @@
-pkgname=disk-health-monitor-git
-pkgver=0.r13.g09400cf
+pkgname=disk-health-monitor
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Qt SMART and NVMe disk health monitor with trend tracking"
 arch=('any')
@@ -12,25 +12,25 @@ depends=(
   'smartmontools'
   'nvme-cli'
 )
-makedepends=(
-  'git'
+optdepends=(
+  'python-gobject: libadwaita interface'
+  'gtk4: libadwaita interface'
+  'libadwaita: libadwaita interface'
 )
-source=("$pkgname::git+https://github.com/EvansOgala/disk-health-monitor.git")
+conflicts=(
+  'disk-health-monitor-git'
+)
+
 sha256sums=('SKIP')
 
-pkgver() {
-  cd "$srcdir/$pkgname"
-  printf "0.r%s.g%s" \
-    "$(git rev-list --count HEAD)" \
-    "$(git rev-parse --short HEAD)"
-}
-
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir"
 
   install -d "$pkgdir/usr/lib/disk-health-monitor"
   install -Dm644 main.py "$pkgdir/usr/lib/disk-health-monitor/main.py"
+  install -Dm644 main.py "$pkgdir/usr/lib/disk-health-monitor/main.py"
   install -Dm644 ui.py "$pkgdir/usr/lib/disk-health-monitor/ui.py"
+  install -Dm644 gtk_main.py "$pkgdir/usr/lib/disk-health-monitor/gtk_main.py"
   install -Dm644 qt_style.py "$pkgdir/usr/lib/disk-health-monitor/qt_style.py"
   install -Dm644 settings.py "$pkgdir/usr/lib/disk-health-monitor/settings.py"
   install -Dm644 disk_ops.py "$pkgdir/usr/lib/disk-health-monitor/disk_ops.py"
@@ -40,13 +40,22 @@ package() {
 exec /usr/bin/python3 /usr/lib/disk-health-monitor/main.py "$@"
 LAUNCHER
 
+install -Dm755 /dev/stdin "$pkgdir/usr/bin/disk-health-monitor-gtk" <<'LAUNCHER'
+#!/bin/sh
+exec /usr/bin/python3 /usr/lib/disk-health-monitor/gtk_main.py "$@"
+LAUNCHER
+
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/org.evans.DiskHealthMonitor" <<'LAUNCHER'
 #!/bin/sh
 exec /usr/bin/python3 /usr/lib/disk-health-monitor/main.py "$@"
 LAUNCHER
 
+  install -Dm755 disk-health-monitor-gtk.sh "$pkgdir/usr/bin/disk-health-monitor-gtk"
+
   install -Dm644 org.evans.DiskHealthMonitor.desktop \
     "$pkgdir/usr/share/applications/org.evans.DiskHealthMonitor.desktop"
+  install -Dm644 org.evans.DiskHealthMonitor.Gtk.desktop \
+    "$pkgdir/usr/share/applications/org.evans.DiskHealthMonitor.Gtk.desktop"
   install -Dm644 org.evans.DiskHealthMonitor.metainfo.xml \
     "$pkgdir/usr/share/metainfo/org.evans.DiskHealthMonitor.metainfo.xml"
   install -Dm644 org.evans.DiskHealthMonitor.svg \

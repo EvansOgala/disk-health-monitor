@@ -1,0 +1,19 @@
+[Desktop Entry]
+Categories=Utility;System;Monitor;
+Comment=SMART and NVMe health checks with temperature history
+Comment=SMART and NVMe health checks with temperature history
+Exec=disk-health-monitor-gtk
+GenericName=
+GenericName=
+Icon=org.evans.DiskHealthMonitor
+MimeType=
+Name=Disk Health Monitor (GNOME)
+Name=Disk Health Monitor (GNOME)
+Path=
+StartupNotify=true
+StartupWMClass=org.evans.DiskHealthMonitor.Gtk
+Terminal=false
+TerminalOptions=
+Type=Application
+X-KDE-SubstituteUID=false
+X-KDE-Username=

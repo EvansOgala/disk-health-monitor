@@ -5,6 +5,6 @@ Comment=SMART and NVMe health checks with trend tracking
 Exec=org.evans.DiskHealthMonitor
 Icon=org.evans.DiskHealthMonitor
 Terminal=false
-Categories=Utility;System;Monitor;
+Categories=Utility;System;Monitor;InfinityLinux;
 StartupNotify=true
 StartupWMClass=DiskHealthMonitor

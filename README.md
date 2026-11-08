@@ -1,6 +1,6 @@
 # Disk Health Monitor
 
-Disk Health Monitor is a Qt desktop utility for checking SMART and NVMe drive health, temperatures, and trend history.
+Disk Health Monitor is a desktop utility for checking SMART and NVMe drive health, temperatures, and trend history. It includes a PySide6 interface and a separate native GNOME/libadwaita interface.
 
 ## Features
 
@@ -10,6 +10,7 @@ Disk Health Monitor is a Qt desktop utility for checking SMART and NVMe drive he
 - Temperature and health trend snapshots
 - Launch detailed SMART command output in a terminal
 - Qt desktop UI on Linux and Windows
+- Optional native libadwaita UI for GNOME
 
 ## Runtime Dependencies
 
@@ -32,6 +33,17 @@ sudo pacman -S --needed python pyside6 smartmontools nvme-cli polkit xterm
 cd ~/Documents/disk-health-monitor
 python3 main.py
 ```
+
+### GNOME / libadwaita variant
+
+Install the GTK bindings and run the alternate frontend:
+
+```bash
+sudo pacman -S --needed python-gobject gtk4 libadwaita
+python3 gtk_main.py
+```
+
+After installing the AUR package, start it with `disk-health-monitor-gtk` or choose **Disk Health Monitor (GNOME)** in the app launcher. The libadwaita interface follows the desktop color scheme.
 
 ## Packaging
 

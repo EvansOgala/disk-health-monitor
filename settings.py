@@ -27,7 +27,7 @@ def load_settings() -> dict:
     merged = DEFAULT_SETTINGS.copy()
     merged.update(data)
 
-    if merged.get("theme") not in {"dark", "light"}:
+    if merged.get("theme") not in {"dark", "light", "nord", "sunset", "forest"}:
         merged["theme"] = DEFAULT_SETTINGS["theme"]
 
     try:
